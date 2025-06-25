@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.paint.Color?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.example.EAI.Assignment.desktop.controller.OrderDetailPageController"
+      style="-fx-background-color: linear-gradient(to bottom right,rgb(255, 190, 190) 0%,rgb(228, 182, 249) 100%);"
+      spacing="20" alignment="TOP_CENTER">
+    
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Header -->
+    <VBox alignment="CENTER" spacing="10">
+        <Text text="Order Details" 
+              style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-fill: rgb(32, 32, 32);"/>
+        <Text fx:id="orderIdText" text="Order ID: " 
+              style="-fx-font-size: 18px; -fx-fill:rgb(32, 32, 32);"/>
+    </VBox>
+
+    <!-- Back Button -->
+    <Button fx:id="backButton" text="Back" alignment="CENTER_LEFT"
+            style="-fx-background-color:rgb(74, 3, 3); -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 8 20;"
+            onAction="#handleBack"/>
+
+    <!-- Scrollable Content -->
+    <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS">
+        <content>
+            <VBox style="-fx-background-color: rgba(255, 255, 255, 0.95); -fx-background-radius: 15;" 
+                  spacing="15" alignment="TOP_CENTER">
+                <padding>
+                    <Insets top="25" right="25" bottom="25" left="25"/>
+                </padding>
+                
+                <!-- Customer Information -->
+                <VBox spacing="10">
+                    <Text text="Customer Information" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-fill: #333;"/>
+                    <GridPane hgap="20" vgap="10">
+                        <Label text="Name:" style="-fx-font-weight: bold; -fx-text-fill: #555;"/>
+                        <Label fx:id="customerNameLabel" text="" GridPane.columnIndex="1"/>
+                        
+                        <Label text="Phone:" style="-fx-font-weight: bold; -fx-text-fill: #555;" GridPane.rowIndex="1"/>
+                        <Label fx:id="customerPhoneLabel" text="" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                    </GridPane>
+                </VBox>
+                
+                <!-- Order Details -->
+                <VBox spacing="10">
+                    <Text text="Order Details" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-fill: #333;"/>
+                    <GridPane hgap="20" vgap="10">
+                        <Label text="Status:" style="-fx-font-weight: bold; -fx-text-fill: #555;"/>
+                        <Label fx:id="statusLabel" text="" GridPane.columnIndex="1"/>
+                        
+                        <Label text="Order Time:" style="-fx-font-weight: bold; -fx-text-fill: #555;" GridPane.rowIndex="1"/>
+                        <Label fx:id="orderTimeLabel" text="" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                        
+                        <Label text="Estimated Pickup:" style="-fx-font-weight: bold; -fx-text-fill: #555;" GridPane.rowIndex="2"/>
+                        <Label fx:id="estimatedPickupLabel" text="" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                        
+                        <Label text="Actual Pickup:" style="-fx-font-weight: bold; -fx-text-fill: #555;" GridPane.rowIndex="3"/>
+                        <Label fx:id="actualPickupLabel" text="" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                    </GridPane>
+                </VBox>
+                
+                <!-- Food Items -->
+                <VBox spacing="10">
+                    <Text text="Food Items" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-fill: #333;"/>
+                    <ListView fx:id="foodItemsListView" prefHeight="100"/>
+                </VBox>
+                
+                <!-- Special Instructions -->
+                <VBox spacing="10">
+                    <Text text="Special Instructions" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-fill: #333;"/>
+                    <TextArea fx:id="specialInstructionsTextArea" editable="false" prefRowCount="2"
+                              style="-fx-background-color: #f8f9fa; -fx-border-color: #dee2e6; -fx-border-radius: 5;"/>
+                </VBox>
+                
+                <!-- Payment Information -->
+                <VBox spacing="10">
+                    <Text text="Payment Information" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-fill: #333;"/>
+                    <GridPane hgap="20" vgap="10">
+                        <Label text="Subtotal:" style="-fx-font-weight: bold; -fx-text-fill: #555;"/>
+                        <Label fx:id="subtotalLabel" text="" GridPane.columnIndex="1"/>
+                        
+                        <Label text="Tax:" style="-fx-font-weight: bold; -fx-text-fill: #555;" GridPane.rowIndex="1"/>
+                        <Label fx:id="taxLabel" text="" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                        
+                        <Label text="Total:" style="-fx-font-weight: bold; -fx-text-fill: #555;" GridPane.rowIndex="2"/>
+                        <Label fx:id="totalLabel" text="" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                        
+                        <Label text="Payment Method:" style="-fx-font-weight: bold; -fx-text-fill: #555;" GridPane.rowIndex="3"/>
+                        <Label fx:id="paymentMethodLabel" text="" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                    </GridPane>
+                </VBox>
+                
+                <!-- Restaurant Information -->
+                <VBox spacing="10">
+                    <Text text="Restaurant Information" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-fill: #333;"/>
+                    <GridPane hgap="20" vgap="10">
+                        <Label text="Name:" style="-fx-font-weight: bold; -fx-text-fill: #555;"/>
+                        <Label fx:id="restaurantNameLabel" text="" GridPane.columnIndex="1"/>
+                        
+                        <Label text="Address:" style="-fx-font-weight: bold; -fx-text-fill: #555;" GridPane.rowIndex="1"/>
+                        <Label fx:id="restaurantAddressLabel" text="" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                    </GridPane>
+                </VBox>
+            </VBox>
+        </content>
+    </ScrollPane>
+
+    <!-- Action Buttons -->
+    <HBox spacing="15" alignment="CENTER">
+        <Button fx:id="updateStatusButton" text="Update Status" 
+                style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 12 25;"
+                onAction="#handleUpdateStatus"/>
+        
+        <Button fx:id="cancelOrderButton" text="Cancel Order" 
+                style="-fx-background-color: #dc3545; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 12 25;"
+                onAction="#handleCancelOrder"/>
+        
+        <Button fx:id="deleteOrderButton" text="Delete Order" 
+                style="-fx-background-color: #6c757d; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 12 25;"
+                onAction="#handleDeleteOrder" visible="false"/>
+    </HBox>
+
+    <!-- Loading Indicator -->
+    <ProgressIndicator fx:id="loadingIndicator" visible="false" maxWidth="40" maxHeight="40"/>
+</VBox> 

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.paint.Color?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.example.EAI.Assignment.desktop.controller.HomePageController"
+      style="-fx-background-color: linear-gradient(to bottom right,rgb(255, 190, 190) 0%,rgb(228, 182, 249) 100%);"
+      spacing="20" alignment="TOP_CENTER">
+    
+    <padding>
+        <Insets top="30" right="30" bottom="30" left="30"/>
+    </padding>
+
+    <!-- Header -->
+    <VBox alignment="CENTER" spacing="10">
+        <Text text="TapauXpress Order Management System" 
+              style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-fill: rgb(32, 32, 32);"/>
+        <Text text="Manage orders efficiently and provide excellent service" 
+              style="-fx-font-size: 16px; -fx-fill: rgb(32, 32, 32);"/>
+    </VBox>
+
+    <!-- Search Section -->
+    <VBox style="-fx-background-color: rgba(255, 255, 255, 0.95); -fx-background-radius: 15;" 
+          spacing="15" alignment="CENTER" maxWidth="600">
+        <padding>
+            <Insets top="25" right="25" bottom="25" left="25"/>
+        </padding>
+        
+        <Text text="Search Order by ID" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-fill: #333;"/>
+        
+        <HBox spacing="10" alignment="CENTER">
+            <TextField fx:id="searchField" promptText="Enter Order ID" 
+                       style="-fx-font-size: 14px; -fx-pref-width: 300px; -fx-background-radius: 8;"/>
+            <Button fx:id="searchButton" text="Search" 
+                    style="-fx-background-color: #667eea; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 10 20;"
+                    onAction="#handleSearch"/>
+        </HBox>
+        
+        <Label fx:id="searchResultLabel" style="-fx-text-fill: #666; -fx-font-size: 14px;" 
+               text="Enter an order ID to search for specific orders"/>
+    </VBox>
+
+    <!-- All Orders Section -->
+    <VBox style="-fx-background-color: rgba(255, 255, 255, 0.95); -fx-background-radius: 15;" 
+          spacing="15" VBox.vgrow="ALWAYS">
+        <padding>
+            <Insets top="25" right="25" bottom="25" left="25"/>
+        </padding>
+        
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <Text text="All Incoming Orders" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-fill: #333;"/>
+            <Button fx:id="refreshButton" text="🔄 Refresh" 
+                    style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 8 15;"
+                    onAction="#handleRefresh"/>
+        </HBox>
+        
+        <TableView fx:id="ordersTable" VBox.vgrow="ALWAYS" style="-fx-background-color: transparent;">
+            <columns>
+                <TableColumn fx:id="orderIdColumn" text="Order ID"/>
+                <TableColumn fx:id="customerNameColumn" text="Customer Name"/>
+                <TableColumn fx:id="statusColumn" text="Status"/>
+                <TableColumn fx:id="totalPriceColumn" text="Total Price"/>
+                <TableColumn fx:id="orderTimeColumn" text="Order Time"/>
+                <TableColumn fx:id="actionsColumn" text="Actions"/>
+            </columns>
+        </TableView>
+        
+        <Label fx:id="statusLabel" style="-fx-text-fill: #666; -fx-font-size: 14px;" 
+               text="Click on an order to view details or use the action buttons"/>
+    </VBox>
+
+    <!-- Loading Indicator -->
+    <ProgressIndicator fx:id="loadingIndicator" visible="false" maxWidth="50" maxHeight="50"/>
+</VBox> 
